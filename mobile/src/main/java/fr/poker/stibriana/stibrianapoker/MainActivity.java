@@ -1,5 +1,7 @@
 package fr.poker.stibriana.stibrianapoker;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -14,7 +17,7 @@ public class MainActivity extends ActionBarActivity {
     int points;
     int gain;
     double coef[]={0,5,4,3,2.5,2.25,2,1.75,1.5,1.25};
-    double coef2[]={0,7/2,2,7/6.5};
+    double coef2[]={0,3.5,2,7/6.5};
     int joueurs=0;
     int place=0;
 
@@ -54,32 +57,47 @@ public class MainActivity extends ActionBarActivity {
         TextView Pointsdisplay = (TextView) findViewById(R.id.textView);
         TextView Gaindisplay = (TextView) findViewById(R.id.textView2);
 
-        joueurs = Integer.valueOf(joueursRecup.getText().toString());
-        place = Integer.valueOf(placeRecup.getText().toString());
-
-        if (place > 9)
-        {
-            points = (int)Math.round((joueurs+1-place));
+        if (joueursRecup.getText().toString().trim().length() == 0) {
+            Toast.makeText(this, "Veuillez entrez le nombre de joueurs", Toast.LENGTH_SHORT).show();
         }
-        else
-        {
-            points = (int)Math.round(coef[place]*(joueurs-place+1));
+        else if (placeRecup.getText().toString().trim().length() == 0){
+            Toast.makeText(this, "Veuillez entrez votre place", Toast.LENGTH_SHORT).show();
         }
 
-        if (place < 4)
-        {
-            gain = (int)Math.round((joueurs * coef2[place]));
-        }
-        else if (place == 4)
-        {
-            gain = joueurs*7-(int)Math.round(joueurs*3.5)-(int)Math.round(joueurs*2)-(int)Math.round(joueurs*7/6.5);
-        }
-        else
-        {
-            gain = 0;
-        }
+        else {
 
-        Pointsdisplay.setText(String.valueOf(points));
-        Gaindisplay.setText(String.valueOf(gain));
+            joueurs = Integer.valueOf(joueursRecup.getText().toString());
+            place = Integer.valueOf(placeRecup.getText().toString());
+
+            if (place > joueurs){
+                Toast.makeText(this, "Vous avez rentré de mauvaises informations", Toast.LENGTH_SHORT).show();
+            }
+            else {
+
+                if (place > 9) {
+                    points = (int) Math.round((joueurs + 1 - place));
+                } else {
+                    points = (int) Math.round(coef[place] * (joueurs - place + 1));
+                }
+
+                if (place < 4) {
+                    gain = (int) Math.round((joueurs * coef2[place]));
+                } else if (place == 4) {
+                    gain = joueurs * 7 - (int) Math.round(joueurs * 3.5) - (int) Math.round(joueurs * 2) - (int) Math.round(joueurs * 7 / 6.5);
+                } else {
+                    gain = 0;
+                }
+
+                Pointsdisplay.setText(String.valueOf(points) + "pts");
+                Gaindisplay.setText(String.valueOf(gain) + "€");
+            }
+        }
+    }
+
+    public void goScore(View view) {
+        Uri uri = Uri.parse("https://docs.google.com/spreadsheets/d/1J64YMpKCAftDtn9-YyFMVYranCEjTOKGyP9nzkgpY4I/edit?usp=sharing");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 }
+
