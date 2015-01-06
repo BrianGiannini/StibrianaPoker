@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,16 +17,38 @@ public class MainActivity extends ActionBarActivity {
 
     int points;
     int gain;
-    double coef[]={0,5,4,3,2.5,2.25,2,1.75,1.5,1.25};
-    double coef2[]={0,3.5,2,7/6.5};
-    int joueurs=0;
-    int place=0;
+    double coef[] = {0, 5, 4, 3, 2.5, 2.25, 2, 1.75, 1.5, 1.25};
+    double coef2[] = {0, 3.5, 2, 7 / 6.5};
+    int joueurs = 0;
+    int place = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        EditText joueursRecup = (EditText) findViewById(R.id.joueurs);
+        EditText placeRecup = (EditText) findViewById(R.id.place);
+
+        joueursRecup.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int actionId, KeyEvent event) {
+                if (KeyEvent.KEYCODE_ENTER == actionId) {
+                    sending();
+                }
+                return false;
+            }
+        });
+
+        placeRecup.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int actionId, KeyEvent event) {
+                if (KeyEvent.KEYCODE_ENTER == actionId) {
+                    sending();
+                }
+                return false;
+            }
+        });
     }
 
 
@@ -52,6 +75,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void sendMessage(View view) {
+
+        sending();
+
+    }
+
+    public void sending(){
         EditText joueursRecup = (EditText) findViewById(R.id.joueurs);
         EditText placeRecup = (EditText) findViewById(R.id.place);
         TextView Pointsdisplay = (TextView) findViewById(R.id.textView);
@@ -59,20 +88,16 @@ public class MainActivity extends ActionBarActivity {
 
         if (joueursRecup.getText().toString().trim().length() == 0) {
             Toast.makeText(this, "Veuillez entrez le nombre de joueurs", Toast.LENGTH_SHORT).show();
-        }
-        else if (placeRecup.getText().toString().trim().length() == 0){
+        } else if (placeRecup.getText().toString().trim().length() == 0) {
             Toast.makeText(this, "Veuillez entrez votre place", Toast.LENGTH_SHORT).show();
-        }
-
-        else {
+        } else {
 
             joueurs = Integer.valueOf(joueursRecup.getText().toString());
             place = Integer.valueOf(placeRecup.getText().toString());
 
-            if (place > joueurs){
+            if (place > joueurs) {
                 Toast.makeText(this, "Vous avez rentré de mauvaises informations", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
 
                 if (place > 9) {
                     points = (int) Math.round((joueurs + 1 - place));
