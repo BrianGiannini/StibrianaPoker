@@ -75,7 +75,7 @@
             android:onClick="goScore"
             android:gravity="center"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/" />
+            android:id="@+id/goToScore" />
 
     </LinearLayout>
 

@@ -1,8 +1,8 @@
 package fr.poker.stibriana.stibrianapoker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     int points;
     int gain;
