@@ -120,7 +120,7 @@ public class MainActivity extends Activity {
     }
 
     public void goScore(View view) {
-        Uri uri = Uri.parse("https://docs.google.com/spreadsheets/d/1J64YMpKCAftDtn9-YyFMVYranCEjTOKGyP9nzkgpY4I/edit?usp=sharing");
+        Uri uri = Uri.parse("https://docs.google.com/spreadsheets/d/1w6YO3aF3N5l0KGuf-y67v2m2EpgKSJn2Z97I4tpZFnQ/edit?usp=sharing");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
