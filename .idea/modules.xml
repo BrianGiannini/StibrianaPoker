@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/StibrianaPoker.iml" filepath="$PROJECT_DIR$/StibrianaPoker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mobile/mobile.iml" filepath="$PROJECT_DIR$/mobile/mobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mobile/StibrianaPoker.mobile.iml" filepath="$PROJECT_DIR$/.idea/modules/mobile/StibrianaPoker.mobile.iml" />
     </modules>
   </component>
 </project>

@@ -2,10 +2,19 @@
 <resources>
 
     <string name="app_name">Stibriana Poker</string>
-    <string name="joueurs">Joueurs</string>
+    <string name="players_hint_text">Joueurs</string>
     <string name="place">Place  </string>
-    <string name="button_send">Calculer</string>
+    <string name="button_calculate">Calculer</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="points">Points :\u0020</string>
+    <string name="gain">Gain :\u0020</string>
+    <string name="score_link_text">lien vers tableau des scores</string>
+
+    <string name="showed_pts">%d pts</string>
+    <string name="showed_gain">%d €</string>
+    <string name="enter_players_number_text">Veuillez entrez le nombre de joueurs</string>
+    <string name="enter_place_text">Veuillez entrez votre place</string>
+    <string name="wrong_informaiton_message_text">Vous avez rentré de mauvaises informations</string>
 
 </resources>
